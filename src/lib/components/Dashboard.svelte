@@ -1,6 +1,5 @@
 <script>
 	import DashboardNameForm from './DashboardNameForm.svelte';
-	import { fade } from 'svelte/transition';
 	export const name = $state('');
 	const plugins = $state([
 		{ id: 'plugin1', name: 'clock' },
@@ -19,22 +18,22 @@
 
 {#if name === ''}
 	<DashboardNameForm />
-{/if}
-<div class="main-dashboard-container">
-	<h1>Добро пожаловать, {name}</h1>
-	<div class="plugins-container">
-		{#each plugins as plugin}
-			{#await loadDashboardPlugin(plugin.name) then Component}
-				{#if Component}
-					<div class="card">
-						<Component />
-					</div>
-				{/if}
-			{/await}
-		{/each}
+{:else}
+	<div class="main-dashboard-container">
+		<h1>Добро пожаловать, {name}</h1>
+		<div class="plugins-container">
+			{#each plugins as plugin}
+				{#await loadDashboardPlugin(plugin.name) then Component}
+					{#if Component}
+						<div class="card">
+							<Component />
+						</div>
+					{/if}
+				{/await}
+			{/each}
+		</div>
 	</div>
-</div>
-``
+{/if}
 
 <style>
 	.plugins-container {

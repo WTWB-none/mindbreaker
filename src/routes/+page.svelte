@@ -1,14 +1,14 @@
 <script>
 	import WelcomeAnim from '$lib/components/WelcomeAnim.svelte';
 	import Dashboard from '$lib/components/Dashboard.svelte';
-	import { AnimShow } from '$lib/components/store.js';
+	const AnimShow = false;
 </script>
 
 <div class="main view">
-	{#if $AnimShow}
+	{#if AnimShow}
 		<WelcomeAnim />
 	{/if}
-	{#if !$AnimShow}
+	{#if !AnimShow}
 		<Dashboard />
 	{/if}
 </div>

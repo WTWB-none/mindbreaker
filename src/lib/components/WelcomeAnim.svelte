@@ -1,6 +1,5 @@
 <script>
 	import { slide } from 'svelte/transition';
-	import { AnimShow } from './store';
 	let welcome_info = [
 		'Добро пожаловать в mindbreaker, путник!',
 		'Это мое новое творение которое я создал как сайд-проект.',
@@ -10,10 +9,7 @@
 	];
 	let current_info = $state(0);
 
-	function lessgo() {
-		AnimShow.update((state) => !state);
-		console.log('penis: ', $AnimShow);
-	}
+	function lessgo() {}
 </script>
 
 <div class="animation-block">
